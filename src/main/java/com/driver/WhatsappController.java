@@ -23,11 +23,11 @@ public class WhatsappController {
     WhatsappService whatsappService = new WhatsappService();
 
     @PostMapping("/add-user")
-    public String createUser(String name, String mobile) throws Exception {
+    public String createUser(@RequestParam(value = "name") String name, @RequestParam(value = "mobile") String mobile) throws Exception {
         //If the mobile number exists in database, throw "User already exists" exception
         //Otherwise, create the user and return "SUCCESS"
 
-        return whatsappService.createUser(name, mobile);
+            return whatsappService.createUser(name, mobile);
     }
 
     @PostMapping("/add-group")
@@ -89,4 +89,5 @@ public class WhatsappController {
 
         return whatsappService.findMessage(start, end, K);
     }
+
 }
